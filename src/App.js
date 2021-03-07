@@ -1,20 +1,27 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import Home from "./components/Homepage/Home";
+import Login from "./components/Loginpage/Login";
+import Main from "./components/Homepage/Main";
 
 class App extends Component {
-
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        
-          <a>
-            Learn
-          </a>
-        </header>
+      <div>
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <Login />
+            </Route>
+            <Route path="/redirect">
+              <Home />
+            </Route>
+            <Route path="/main">
+              <Main />
+            </Route>
+          </Switch>
+        </Router>
       </div>
     );
   }
