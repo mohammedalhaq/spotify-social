@@ -1,0 +1,18 @@
+.entry{
+    width: 35%;
+    height: 6rem;
+    background-color: green;
+    margin: auto;
+    padding: 0;
+    margin-bottom: -0.5rem; 
+}
+
+.entry img {
+    float: left;
+    height: 6rem;
+}
+
+h4, h5{
+    padding-right: 10%;
+    padding-top: 4%;
+}

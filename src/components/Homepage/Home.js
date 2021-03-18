@@ -1,53 +1,59 @@
 import React, { Component } from "react";
-
-const {
-  REACT_APP_CLIENT_ID,
-  REACT_APP_CLIENT_SECRET
-} = process.env;
+import ListEntry from '../ListEntry/ListEntry';
+import { Button } from '@material-ui/core';
+import "../ListEntry/ListEntry.css";
 
 class Home extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      token: "",
-      user: []
+      content: [],
+      artists: true
     }
+
+    this.showContent = this.showContent.bind(this);
+    this.changeContent = this.changeContent.bind(this);
   }
 
-  componentDidMount() {
-    const code = window.location.hash.split("access_token=")[1].split("&token_type=")[0]
-    fetch("https://api.spotify.com/v1/me", {
+  showContent(type, time) {
+    const token = window.location.hash.split("access_token=")[1].split("&token_type=")[0]
+    fetch("https://api.spotify.com/v1/me/top/" + type, {
       method: 'GET',
       headers: {
-        Authorization: "Bearer " + code
+        Authorization: "Bearer " + token
       }
     })
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => this.setState({ content: data.items }))
+  }
 
-    /*fetch("https://accounts.spotify.com/api/token", {
-      method: 'POST',
-      body: {
-        'grant_type': 'client_credentials',
-        'code': code,
-        'redirect_uri': 'http://localhost:3000/main',
-        'client_secret': REACT_APP_CLIENT_SECRET,
-        'client_id': REACT_APP_CLIENT_ID,
-      },
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      }
-    })
-      .then(response => response.json())
-      .then(data => console.log(data))*/
+
+  componentDidMount() {
+    this.showContent("artists", "");
+  }
+
+  changeContent() {
+    const temp = this.state.artists;
+    this.setState({ content: [], artists: !temp })
+    const type = this.state.artists === true ? "tracks" : "artists";
+    this.showContent(type, "");
   }
 
   render() {
+    const list = this.state.content.map((item, key) =>
+      <ListEntry key={key} entry={item} index={key + 1} artists={this.state.artists} />
+    )
+
     return (
-      <div>
-        Home
-        {this.state.user.id}
+      <div style={{ width: "100%", textAlign: "center" }}>
+        <h1>Your top {this.state.artists ? "artists" : "tracks"}</h1>
+        <Button variant="contained" color="primary" type="submit" onClick={this.changeContent}>
+          View {this.state.artists ? "tracks" : "artists"}
+        </Button>
+        <ul style={{ listStyleType: "none" }}>
+          {list}
+        </ul>
       </div>
     );
   }
