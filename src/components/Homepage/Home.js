@@ -66,6 +66,9 @@ class Home extends Component {
 
     return (
       <div style={{ width: "70%", textAlign: "center", 'padding-left': '15vw' }}>
+        <Button variant="contained" color="primary" type="submit" onClick={this.changeContent}>
+          View {this.state.artists ? "tracks" : "artists"}
+        </Button>
         <Card className='card'>
           <CardMedia
             component="img"
@@ -92,9 +95,7 @@ class Home extends Component {
           {list}
         </Card>
         {/* <h1>Your top {this.state.artists ? "artists" : "tracks"}</h1>
-        <Button variant="contained" color="primary" type="submit" onClick={this.changeContent}>
-          View {this.state.artists ? "tracks" : "artists"}
-        </Button>
+        
         <ul style={{ listStyleType: "none" }}>
           {list}
         </ul> */}
