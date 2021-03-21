@@ -61,7 +61,7 @@ class Home extends Component {
     )
 
     return (
-      <div style={{ width: "80%", textAlign: "center", padding: "40px" }}>
+      <div style={{ width: "70%", textAlign: "center", 'padding-left': '15vw' }}>
         <Card className='card'>
           <CardMedia
             component="img"
@@ -72,7 +72,7 @@ class Home extends Component {
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              Your top {this.state.artists ? "artists" : "tracks"}
+              Your Top {this.state.artists ? "Artists" : "Tracks"}
             </Typography>
           </CardContent>
           {list}
