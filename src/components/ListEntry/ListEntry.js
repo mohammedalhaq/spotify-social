@@ -8,9 +8,9 @@ class ListEntry extends Component {
       return (
         <li>
           <div className="entry">
+            <p>{this.props.index}</p>
             <img src={item.images[2].url} alt="artist_img" />
             <h5>{item.name}</h5>
-            <p>{this.props.index}</p>
           </div>
         </li>
       );
