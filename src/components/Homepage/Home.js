@@ -58,6 +58,11 @@ class Home extends Component {
     const list = this.state.content.map((item, key) =>
       <ListEntry key={key} entry={item} index={key + 1} artists={this.state.artists} />
     )
+    // const [value, setValue] = React.useState(0);
+
+    // const handleChange = (event, newValue) => {
+    //   setValue(newValue);
+    // };
 
     return (
       <div style={{ width: "70%", textAlign: "center", 'padding-left': '15vw' }}>
@@ -73,7 +78,12 @@ class Home extends Component {
             <Typography gutterBottom variant="h5" component="h2">
               Your Top {this.state.artists ? "Artists" : "Tracks"}
             </Typography>
-            <Tabs centered style={{ 'margin-bottom': '-1.5em' }}>
+            <Tabs //value={value}
+              //onChange={handleChange} 
+              indicatorColor="primary"
+              textColor="primary"
+              centered
+              style={{ 'margin-bottom': '-1.5em' }}>
               <Tab label="All time" />
               <Tab label="Last Month" />
               <Tab label="Last 6 Months" />
