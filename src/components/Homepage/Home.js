@@ -13,12 +13,10 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
 
 class Home extends Component {
+
+
   constructor(props) {
     super(props);
 
@@ -30,6 +28,7 @@ class Home extends Component {
     this.showContent = this.showContent.bind(this);
     this.changeContent = this.changeContent.bind(this);
   }
+
 
   showContent(type, time) {
     const token = window.location.hash.split("access_token=")[1].split("&token_type=")[0]
@@ -74,6 +73,11 @@ class Home extends Component {
             <Typography gutterBottom variant="h5" component="h2">
               Your Top {this.state.artists ? "Artists" : "Tracks"}
             </Typography>
+            <Tabs centered style={{ 'margin-bottom': '-1.5em' }}>
+              <Tab label="All time" />
+              <Tab label="Last Month" />
+              <Tab label="Last 6 Months" />
+            </Tabs>
           </CardContent>
           {list}
         </Card>
