@@ -17,7 +17,7 @@ import Box from '@material-ui/core/Box';
 
 function Home() {
   const [content, setContent] = useState([]);
-  const [artists, setArtists] = useState(true);
+  const [artists, setArtists] = useState(false);
 
   const showContent = (type, time) => { //"/?t="
     const token = window.location.hash.split("access_token=")[1].split("&token_type=")[0]
@@ -32,7 +32,7 @@ function Home() {
   }
 
   useEffect(() => {
-    showContent("artists", "")
+    showContent("tracks", "/?time_range=long_term")
   }, []);
 
 
@@ -44,47 +44,61 @@ function Home() {
     showContent(type, "");
   }
 
-  const list = content.map((item, key) =>
-    <ListEntry key={key} entry={item} index={key + 1} artists={artists} />
-  )
-
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
+    console.log(event.target.outerText);
+    const type = artists === true ? "artists" : "tracks";
+    let time = "/?time_range=long_term ";
+    if (event.target.outerText == "LAST 6 MONTHS") {
+      time = "/?time_range=medium_term";
+    } else if (event.target.outerText == "LAST MONTH") {
+      time = "/?time_range=short_term";
+    } else if (event.target.outerText == "ALL TIME") {
+      time = "/?time_range=long_term";
+    }
+    console.log(time);
+    showContent(type, time);
+
     setValue(newValue);
   };
 
-  return (
 
-    <div style={{ width: "70%", textAlign: "center", 'padding-left': '15vw' }}>
-      <Button variant="contained" color="primary" type="submit" onClick={changeContent}>
-        View {artists ? "tracks" : "artists"}
-      </Button>
-      <Card className='card'>
-        <CardMedia
-          component="img"
-          alt="Artist"
-          height='500'
-          image="https://images.unsplash.com/photo-1576328172036-6d52156c525f?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=882&q=80"
-          title="Artist"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Your Top {artists ? "Artists" : "Tracks"}
-          </Typography>
-          <Tabs value={value}
-            onChange={handleChange}
-            indicatorColor="primary"
-            textColor="primary"
-            centered
-            style={{ 'margin-bottom': '-1.5em' }}>
-            <Tab label="All time" />
-            <Tab label="Last Month" />
-            <Tab label="Last 6 Months" />
-          </Tabs>
 
-        </CardContent>
-        {/* <TabPanel value={value} index="one">
+  if (content.length) {
+      const list = content.map((item, key) =>
+    <ListEntry key={key} entry={item} index={key + 1} artists={artists} />
+    )
+    return (
+      <div style={{ width: "70%", textAlign: "center", paddingLeft: '15vw' }}>
+        <Button variant="contained" color="primary" type="submit" onClick={changeContent}>
+          View {artists ? "tracks" : "artists"}
+        </Button>
+        <Card className='card'>
+          <CardMedia
+            component="img"
+            alt="Artist"
+            height='500'
+            image="https://images.unsplash.com/photo-1576328172036-6d52156c525f?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=882&q=80"
+            title="Artist"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              Your Top {artists ? "Artists" : "Tracks"}
+            </Typography>
+            <Tabs value={value}
+              onChange={handleChange}
+              indicatorColor="primary"
+              textColor="primary"
+              centered
+              style={{ 'margin-bottom': '-1.5em' }}>
+              <Tab label="All time" />
+              <Tab label="Last Month" />
+              <Tab label="Last 6 Months" />
+            </Tabs>
+
+          </CardContent>
+          {/* <TabPanel value={value} index="one">
           {list}
         </TabPanel>
         <TabPanel value={value} index="two">
@@ -93,16 +107,19 @@ function Home() {
         <TabPanel value={value} index="three">
           {list}
         </TabPanel> */}
-        {list}
-      </Card>
+          {list}
+        </Card>
 
-      {/* <h1>Your top {this.state.artists ? "artists" : "tracks"}</h1>
+        {/* <h1>Your top {this.state.artists ? "artists" : "tracks"}</h1>
         
         <ul style={{ listStyleType: "none" }}>
           {list}
         </ul> */}
-    </div>
-  );
+      </div>
+    );
+  } else {
+    return ("as");
+  }
 }
 
 export default Home;
