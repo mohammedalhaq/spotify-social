@@ -47,11 +47,11 @@ function Home() {
     <ListEntry key={key} entry={item} index={key + 1} artists={artists} />
   )
 
-  // const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(0);
 
-  // const handleChange = (event, newValue) => {
-  //   setValue(newValue);
-  // };
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   return (
 
@@ -71,8 +71,8 @@ function Home() {
           <Typography gutterBottom variant="h5" component="h2">
             Your Top {artists ? "Artists" : "Tracks"}
           </Typography>
-          <Tabs //value={value}
-            //onChange={handleChange} 
+          <Tabs value={value}
+            onChange={handleChange}
             indicatorColor="primary"
             textColor="primary"
             centered
