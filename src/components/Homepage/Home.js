@@ -47,7 +47,14 @@ function Home() {
     <ListEntry key={key} entry={item} index={key + 1} artists={artists} />
   )
 
+  // const [value, setValue] = React.useState(0);
+
+  // const handleChange = (event, newValue) => {
+  //   setValue(newValue);
+  // };
+
   return (
+
     <div style={{ width: "70%", textAlign: "center", 'padding-left': '15vw' }}>
       <Button variant="contained" color="primary" type="submit" onClick={changeContent}>
         View {artists ? "tracks" : "artists"}
