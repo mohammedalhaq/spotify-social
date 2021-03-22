@@ -14,6 +14,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 
+
 function Home() {
   const [content, setContent] = useState([]);
   const [artists, setArtists] = useState(true);
@@ -81,9 +82,20 @@ function Home() {
             <Tab label="Last Month" />
             <Tab label="Last 6 Months" />
           </Tabs>
+
         </CardContent>
+        {/* <TabPanel value={value} index="one">
+          {list}
+        </TabPanel>
+        <TabPanel value={value} index="two">
+          {list}
+        </TabPanel>
+        <TabPanel value={value} index="three">
+          {list}
+        </TabPanel> */}
         {list}
       </Card>
+
       {/* <h1>Your top {this.state.artists ? "artists" : "tracks"}</h1>
         
         <ul style={{ listStyleType: "none" }}>
