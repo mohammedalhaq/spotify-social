@@ -1,5 +1,5 @@
 import React from "react";
-import "./Login.css";
+import "./Login.scss";
 import { Button } from '@material-ui/core';
 import logo from "../../assets/Spotify_Logo_RGB_Black.png";
 
@@ -29,7 +29,8 @@ function Login() {
         </div>
       </div>
       <div className="login" style={{ bottom: "0" }}>
-        <p>Powered by </p> <img className="logo" src={logo} alt="logo" />
+        <p style={{ color: "black", margin: "auto", textAlign: "center" }}>Powered by </p>
+        <img className="logo" src={logo} alt="logo" />
       </div>
     </div>
   );
