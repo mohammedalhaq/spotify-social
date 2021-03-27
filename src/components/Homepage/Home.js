@@ -12,6 +12,7 @@ import Tab from '@material-ui/core/Tab';
 function Home() {
   const [content, setContent] = useState([]);
   const [artists, setArtists] = useState(false);
+  const [timeRange, setTime] = React.useState("/?time_range=long_term");
 
   const showContent = (type, time) => { //"/?t="
     const token = window.location.hash.split("access_token=")[1].split("&token_type=")[0]
@@ -35,20 +36,24 @@ function Home() {
     setContent([]);
     setArtists(!temp);
     const type = artists === true ? "tracks" : "artists";
-    showContent(type, "");
+    showContent(type, timeRange);
   }
 
+
+
   const [value, setValue] = React.useState(0);
+
 
   const handleChange = (event, newValue) => {
     const type = artists === true ? "artists" : "tracks";
     let time = "/?time_range=long_term ";
-    if (event.target.outerText == "LAST 6 MONTHS") {
+    if (event.target.outerText === "LAST 6 MONTHS") {
       time = "/?time_range=medium_term";
-    } else if (event.target.outerText == "LAST MONTH") {
+    } else if (event.target.outerText === "LAST MONTH") {
       time = "/?time_range=short_term";
     }
     showContent(type, time);
+    setTime(time);
     setValue(newValue);
   };
 
@@ -57,10 +62,7 @@ function Home() {
     <ListEntry key={key} entry={item} index={key + 1} artists={artists} />
   )
   return (
-    <div style={{ width: "70%", textAlign: "center", paddingLeft: '15vw' }}>
-      <Button variant="contained" color="primary" type="submit" onClick={changeContent}>
-        View {artists ? "tracks" : "artists"}
-      </Button>
+    <div className="main">
       <Card className='card'>
         <CardMedia
           component="img"
@@ -72,13 +74,16 @@ function Home() {
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             Your Top {artists ? "Artists" : "Tracks"}
+            <Button style={{ float: "right" }} variant="contained" color="primary" type="submit" onClick={changeContent}>
+              View {artists ? "tracks" : "artists"}
+            </Button>
           </Typography>
           <Tabs value={value}
             onChange={handleChange}
             indicatorColor="primary"
             textColor="primary"
             centered
-            style={{ 'margin-bottom': '-1.5em' }}>
+            style={{ marginBottom: '-1.5em' }}>
             <Tab label="All time" />
             <Tab label="Last Month" />
             <Tab label="Last 6 Months" />

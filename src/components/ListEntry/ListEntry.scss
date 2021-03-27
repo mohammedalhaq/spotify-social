@@ -1,11 +1,34 @@
+$strongBlue: #50496d;
+
+@media screen and (max-width: 1920px) {
+  .main {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 823px) {
+  .main {
+    width: 100%;
+  }
+  .main img {
+    max-height: 400px;
+  }
+}
+
+.main{
+  text-align: center;
+  height: auto; 
+  margin: auto;
+}
+
 .entry {
-  padding: 1em 0.75em;
+  padding: 0.75em 0.75em;
   text-align: left;
   font-size: 1.1em;
   margin: 0 1em;
   display: flex;
   align-items: center;
-  color: #50496d;
+  color:$strongBlue;
 }
 
 .entryTracks {
@@ -16,14 +39,14 @@
   margin: 0 1em;
   display: flex;
   align-items: center;
-  color: #50496d;
+  color: $strongBlue;
 }
 
 .entry img, .entryTracks img {
   object-fit: cover;
-  width: 40px;
-  min-width: 40px;
-  height: 50px;
+  width: 70px;
+  min-width: 70px;
+  height: 70px;
   border-radius: 5px;
   margin-right: 1em;
   background: #fafafa;
@@ -34,14 +57,10 @@
   background-position: 50% 50%;
 }
 
-.TopArtistName {
-  color: #50496d;
-  font-weight: bold;
-}
-
-.TopTrack {
+.TopTrack, .TopArtistName {
   color: #3a354e;
   font-weight: bold;
+  font-size: large;
 }
 
 .TopTrackArtist {
@@ -61,3 +80,4 @@ p {
 li {
   list-style-type: none;
 }
+

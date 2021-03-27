@@ -21,15 +21,15 @@ function Login() {
         Brand
         </div>
       <div className="login">
-        <h1>Discover your music</h1>
+        <h1>Discovering your music</h1>
         <div>
           <Button variant="contained" color="primary" type="submit" onClick={authorize}>
             Login with spotify
           </Button>
         </div>
       </div>
-      <div className="login" style={{ bottom: "0" }}>
-        <p style={{ color: "black", margin: "auto", textAlign: "center" }}>Powered by </p>
+      <div className="login" style={{ bottom: "0", position: "absolute" }}>
+        <p style={{color: "black", margin: "auto", textAlign: "center" }}>Powered by </p>
         <img className="logo" src={logo} alt="logo" />
       </div>
     </div>
