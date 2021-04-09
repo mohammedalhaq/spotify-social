@@ -1,19 +1,25 @@
 .login {
-    width: 100%;
-    margin: auto;
-    text-align: center;
-    margin-top: 15%;
-    color: black;
-  }
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  margin-top: 15%;
+  color: black;
+}
   
-  .header {
-    margin: 1rem;
+@media screen and (max-width: 823px) {
+  .login{
+    margin-top: 50%;
   }
+}
+
+.header {
+  margin: 1rem;
+}
   
-  .logo {
-    height: 6vh;
-    padding: 1.5rem;
-    padding-top: 0;
-    bottom: 0;
-  }
+.logo {
+  height: 6vh;
+  padding: 1.5rem;
+  padding-top: 0;
+  bottom: 0;
+}
   

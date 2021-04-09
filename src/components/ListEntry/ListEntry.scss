@@ -1,9 +1,15 @@
 $strongBlue: #50496d;
+$darkBlue: #3a354e;
 
 @media screen and (max-width: 1920px) {
   .main {
     width: 70%;
   }
+  .TopTrack, .TopArtistName {
+    color: $darkBlue;
+    font-weight: bold;
+    font-size: large;
+  }  
 }
 
 @media screen and (max-width: 823px) {
@@ -12,6 +18,15 @@ $strongBlue: #50496d;
   }
   .main img {
     max-height: 400px;
+  }
+  .TopTrack, .TopArtistName {
+    color: $darkBlue;
+    font-weight: bold;
+    font-size: medium;
+  }  
+  .TopTrackArtist {
+    right: 0;
+    float: right;
   }
 }
 
@@ -22,7 +37,7 @@ $strongBlue: #50496d;
 }
 
 .entry {
-  padding: 0.75em 0.75em;
+  padding: 0.75em 0.5em;
   text-align: left;
   font-size: 1.1em;
   margin: 0 1em;
@@ -32,7 +47,7 @@ $strongBlue: #50496d;
 }
 
 .entryTracks {
-  padding: 1em 0.75em;
+  padding: 0.75em 0.5em;
   text-align: left;
   font-size: 1.1em;
   line-height: 1.2;
@@ -57,21 +72,16 @@ $strongBlue: #50496d;
   background-position: 50% 50%;
 }
 
-.TopTrack, .TopArtistName {
-  color: #3a354e;
-  font-weight: bold;
-  font-size: large;
-}
-
 .TopTrackArtist {
   white-space: nowrap;
-  padding-left: 2em;
+  margin-left: 8vh;
 }
 
 p {
   flex: 12px 0 0;
   text-align: right;
   margin-right: 20px;
+  margin-left:-12px;
   font-weight: bold;
   color: #7a69bd;
   font-size: 0.85em;
