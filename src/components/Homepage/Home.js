@@ -15,7 +15,7 @@ function Home() {
   const [timeRange, setTime] = useState("/?time_range=long_term");
   const [header, setHeader] = useState("https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
 
-  const showContent = (type, time) => { 
+  const showContent = (type, time) => {
     const token = window.location.hash.split("access_token=")[1].split("&token_type=")[0]
     fetch("https://api.spotify.com/v1/me/top/" + type + time, {
       method: 'GET',
@@ -54,10 +54,10 @@ function Home() {
     }
     setTime(time);
 
-    if (artists=== true){
+    if (artists === true) {
       const type = "artists";
       showContent(type, time);
-      setHeader("https://images.unsplash.com/photo-1576328172036-6d52156c525f?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=882&q=80")
+      setHeader("https://images.pexels.com/photos/1261578/pexels-photo-1261578.jpeg?cs=srgb&dl=pexels-stas-knop-1261578.jpg&fm=jpg")
     } else {
       const type = "tracks";
       showContent(type, time);
