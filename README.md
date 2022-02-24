@@ -1,6 +1,6 @@
 # spotify-social
 
-An website that compiles a list of the user's top artists and top tracks.
+n website that compiles a list of the user's top artists and top tracks.
 
 Requires a Spotify account to receive results.
 
